@@ -39,6 +39,38 @@ ui <-
       tags$script(src = asset("tree.js"), defer = NA),
       tags$script(src = asset("print.js"), defer = NA),
       tags$script(src = asset("embed.js"), defer = NA),
+      # Phones and small tablets: no hamburger. The tabs stay in one row under the title and swipe sideways.
+      # The items of the Literature and More menus join the row, so every page is one tap away.
+      tags$style(HTML("
+        @media (max-width: 991.98px) {
+          .navbar { padding: 2px 6px 0; }
+          .navbar > .container-fluid { padding-left: 4px; padding-right: 4px; }
+          .navbar-brand { margin: 0; padding: 0; }
+          .navbar-brand div { font-size: 15px !important; padding: 0 !important; display: flex; align-items: center; }
+          .navbar-brand img { height: 26px !important; margin-right: 8px !important; }
+          .navbar-brand .acdb-ver { display: none; }
+          html.acdb-embed .navbar-brand { display: none; }
+          .navbar-toggler { display: none !important; }
+          .navbar-collapse { display: block !important; flex-basis: 100%; width: 100%; padding: 0; margin: 0; }
+          .navbar-nav { flex-direction: row !important; flex-wrap: nowrap; justify-content: flex-start !important; margin: 0 !important; padding-right: 24px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); }
+          .navbar-nav::-webkit-scrollbar { display: none; }
+          .navbar-nav > li { flex: none; }
+          .navbar-nav > li > a { padding: 12px 12px !important; white-space: nowrap; }
+          .navbar-nav li.dropdown { display: contents; }
+          .navbar-nav li.dropdown > .nav-link { display: none; }
+          .navbar-nav .dropdown-menu { display: contents !important; }
+          .navbar-nav .dropdown-menu > li { flex: none; }
+          .navbar-nav .dropdown-item { padding: 12px 12px; font-size: 15px; font-weight: 500; white-space: nowrap; color: rgba(255, 255, 255, 0.78); background: transparent; }
+          .navbar-nav .dropdown-item:hover, .navbar-nav .dropdown-item.active { color: #ffffff; background: transparent; box-shadow: inset 0 -3px 0 #F2A93B; }
+        }
+      ")),
+      # Keep the open tab in view when the row is longer than the screen
+      tags$script(HTML("
+        $(document).on('shown.bs.tab', function (e) {
+          var a = e.target;
+          if (a && a.closest && a.closest('.navbar-nav') && a.scrollIntoView) { a.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' }); }
+        });
+      ")),
       tags$script(defer = NA,
         src = "https://umami.datadiversitylab.synology.me/script.js",
         `data-website-id` = "543cffef-a100-47af-9dd9-2cf39517077b",
