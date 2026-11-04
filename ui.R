@@ -33,6 +33,7 @@ ui <-
       tags$span(class = "acdb-ver", paste0("v", acdb_version))
     ),    
     header = tagList(
+      tags$meta(name = "robots", content = "noindex"),
       tags$link(rel = "stylesheet", href = asset("acdb.css")),
       tags$link(rel = "stylesheet", href = asset("card.css")),
       tags$script(src = asset("photos.js"), defer = NA),
@@ -72,10 +73,10 @@ ui <-
         });
       ")),
       tags$script(defer = NA,
-        src = "https://umami.datadiversitylab.synology.me/script.js",
-        `data-website-id` = "543cffef-a100-47af-9dd9-2cf39517077b",
-        `data-domains` = "datadiversitylab.github.io",
-        `data-tag` = "acdb"
+                  src = "https://umami.datadiversitylab.synology.me/script.js",
+                  `data-website-id` = "543cffef-a100-47af-9dd9-2cf39517077b",
+                  `data-domains` = "viz.datascience.arizona.edu",
+                  `data-tag` = "acdb"
       )
     ),
     

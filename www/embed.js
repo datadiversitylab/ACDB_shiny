@@ -7,6 +7,16 @@
 
   var embedded = window.parent !== window;
   var params = new URLSearchParams(window.location.search);
+
+  // Opened on its own, outside the lab website: send people to the website page, which keeps the access count.
+  // Add ?direct=1 to the address to open the app itself, for testing.
+  var SITE = "https://datadiversitylab.github.io/ACDB/";
+  if (!embedded && params.get("direct") !== "1") {
+    var sp = params.get("species");
+    window.location.replace(SITE + (sp ? "#species=" + encodeURIComponent(sp) : ""));
+    return;
+  }
+
   var state = { tab: null, species: null };
   var hostUrl = null;
 
@@ -20,10 +30,10 @@
 
   function track(name, data) { post({ type: "acdb:event", name: name, data: data || {} }); }
 
-  // Address people can share: the host page when there is one, and the app otherwise
+  // Address people can share: always the lab website page
   function shareUrl(id) {
     if (hostUrl) return hostUrl + "#species=" + encodeURIComponent(id);
-    return window.location.origin + window.location.pathname + "?species=" + encodeURIComponent(id);
+    return SITE + "#species=" + encodeURIComponent(id);
   }
 
   window.acdbCopyLink = function (id, btn) {
