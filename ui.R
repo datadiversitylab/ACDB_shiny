@@ -76,7 +76,7 @@ ui <-
                   src = "https://umami.datadiversitylab.synology.me/script.js",
                   `data-website-id` = "543cffef-a100-47af-9dd9-2cf39517077b",
                   `data-domains` = "viz.datascience.arizona.edu",
-                  `data-tag` = "acdb"
+                  `data-tag` = "acdb-app"
       )
     ),
     
