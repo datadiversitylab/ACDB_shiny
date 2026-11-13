@@ -622,7 +622,7 @@ server <- function(input, output, session) {
               evid("Vertical: ", x$vertical_evidence),
               evid("Horizontal: ", x$horizontal_evidence),
               evid("Oblique: ", x$oblique_evidence),
-              evid("Domains: ", x$domains_evidence),
+              evid("Domains: ", x$domains),
               evid("Anthropogenic effects: ", x$anth_effects)
             ),
             if (length(nums) > 0) tags$div(class = "src", "Sources: ", paste0("[", nums, "]", collapse = " "))
