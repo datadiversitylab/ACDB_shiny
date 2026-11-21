@@ -24,10 +24,6 @@ The **ACDB** aims to:
 
 ## Getting Started
 
-### Access the Shiny App
-
-You can access the ACDB Shiny app [here](https://datadiversitylab.github.io/ACDB/). The app provides an interactive interface to explore the database.
-
 ### Repository Contents
 
 - `app.R`: The Shiny app script.
